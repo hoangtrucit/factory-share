@@ -18,12 +18,20 @@ describe("GRPC User Service V1", () => {
     protoGRPC = GRPC.loadPackageDefinition(proto as any) as any;
   });
 
-  it("should exists these methods UploadService", () => {
+  it("should exists these methods getUsers", () => {
     const client = new protoGRPC.app.payment.user.service.v1.UserService(
       "localhost:5000",
       GRPC.credentials.createInsecure()
     );
     expect(typeof client.getUsers).toBe("function");
+  });
+
+  it("should exists these methods createUser", () => {
+    const client = new protoGRPC.app.payment.user.service.v1.UserService(
+      "localhost:5000",
+      GRPC.credentials.createInsecure()
+    );
+    expect(typeof client.createUser).toBe("function");
   });
 
   afterAll(async () => {

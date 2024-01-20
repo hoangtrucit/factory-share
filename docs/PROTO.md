@@ -7,6 +7,8 @@
     - [UserModel](#app-payment-base-user-v1-UserModel)
   
 - [app/payment/user/service/v1/user.proto](#app_payment_user_service_v1_user-proto)
+    - [CreateUserRequest](#app-payment-user-service-v1-CreateUserRequest)
+    - [CreateUserResponse](#app-payment-user-service-v1-CreateUserResponse)
     - [GetUsersRequest](#app-payment-user-service-v1-GetUsersRequest)
     - [GetUsersResponse](#app-payment-user-service-v1-GetUsersResponse)
   
@@ -56,6 +58,37 @@ User information
 
 
 
+<a name="app-payment-user-service-v1-CreateUserRequest"></a>
+
+### CreateUserRequest
+Request message for `UserService.CreateUser`.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| user_name | [string](#string) |  | The user name |
+| email | [string](#string) |  | The email |
+
+
+
+
+
+
+<a name="app-payment-user-service-v1-CreateUserResponse"></a>
+
+### CreateUserResponse
+Response message for `UserService.CreateUser`.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  | The user id |
+
+
+
+
+
+
 <a name="app-payment-user-service-v1-GetUsersRequest"></a>
 
 ### GetUsersRequest
@@ -97,6 +130,9 @@ User Service
 | GetUsers | [GetUsersRequest](#app-payment-user-service-v1-GetUsersRequest) | [GetUsersResponse](#app-payment-user-service-v1-GetUsersResponse) | Get GetUsers Request: { }
 
 Response: { &#34;users&#34;: [ { &#34;id&#34;: &#34;id&#34;, &#34;userName&#34;: &#34;user name&#34;, &#34;email&#34;: &#34;user@email.com&#34; } ] } |
+| CreateUser | [CreateUserRequest](#app-payment-user-service-v1-CreateUserRequest) | [CreateUserResponse](#app-payment-user-service-v1-CreateUserResponse) | Create User Request: { &#34;userName&#34;: &#34;user name&#34;, &#34;email&#34;: &#34;user@email.com&#34; }
+
+Response: { &#34;id&#34;: &#34;id&#34; } |
 
  
 

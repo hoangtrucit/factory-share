@@ -14,6 +14,20 @@ export interface GetUsersResponse {
   users: UserModel[];
 }
 
+/** Request message for `UserService.CreateUser`. */
+export interface CreateUserRequest {
+  /** The user name */
+  userName: string;
+  /** The email */
+  email: string;
+}
+
+/** Response message for `UserService.CreateUser`. */
+export interface CreateUserResponse {
+  /** The user id */
+  id: string;
+}
+
 /** User Service */
 
 export interface UserServiceClient {
@@ -36,6 +50,22 @@ export interface UserServiceClient {
    */
 
   getUsers(request: GetUsersRequest, metadata?: Metadata): Observable<GetUsersResponse>;
+
+  /**
+   * Create User
+   * Request:
+   * {
+   * "userName": "user name",
+   * "email": "user@email.com"
+   * }
+   *
+   * Response:
+   * {
+   * "id": "id"
+   * }
+   */
+
+  createUser(request: CreateUserRequest, metadata?: Metadata): Observable<CreateUserResponse>;
 }
 
 /** User Service */
@@ -63,11 +93,30 @@ export interface UserServiceController {
     request: GetUsersRequest,
     metadata?: Metadata,
   ): Promise<GetUsersResponse> | Observable<GetUsersResponse> | GetUsersResponse;
+
+  /**
+   * Create User
+   * Request:
+   * {
+   * "userName": "user name",
+   * "email": "user@email.com"
+   * }
+   *
+   * Response:
+   * {
+   * "id": "id"
+   * }
+   */
+
+  createUser(
+    request: CreateUserRequest,
+    metadata?: Metadata,
+  ): Promise<CreateUserResponse> | Observable<CreateUserResponse> | CreateUserResponse;
 }
 
 export function UserServiceControllerMethods() {
   return function (constructor: Function) {
-    const grpcMethods: string[] = ["getUsers"];
+    const grpcMethods: string[] = ["getUsers", "createUser"];
     for (const method of grpcMethods) {
       const descriptor: any = Reflect.getOwnPropertyDescriptor(constructor.prototype, method);
       GrpcMethod("UserService", method)(constructor.prototype[method], method, descriptor);

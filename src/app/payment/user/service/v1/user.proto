@@ -13,6 +13,20 @@ message GetUsersResponse {
   repeated app.payment.base.user.v1.UserModel users = 1;
 }
 
+// Request message for `UserService.CreateUser`.
+message CreateUserRequest {
+  // The user name
+  string user_name = 2;
+  // The email
+  string email = 3;
+}
+
+// Response message for `UserService.CreateUser`.
+message CreateUserResponse {
+  // The user id
+  string id = 1;
+}
+
 // User Service
 service UserService {
   /**
@@ -33,4 +47,19 @@ service UserService {
      }
   */
   rpc GetUsers(GetUsersRequest) returns (GetUsersResponse);
+
+  /**
+     Create User
+     Request:
+     {
+        "userName": "user name",
+     	  "email": "user@email.com"
+     }
+
+     Response:
+     {
+        "id": "id"
+     }
+  */
+  rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
 }
