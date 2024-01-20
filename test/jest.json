@@ -1,0 +1,28 @@
+{
+  "moduleFileExtensions": ["js", "json", "ts"],
+  "rootDir": "..",
+  "testEnvironment": "node",
+  "testRegex": [".test.ts$"],
+  "transform": {
+    "^.+\\.(t|j)s$": "ts-jest"
+  },
+  "testTimeout": 90000,
+  "moduleNameMapper": {
+    "^src/(.*)": "<rootDir>/src/$1",
+    "^src": "<rootDir>/src",
+    "^test/(.*)": "<rootDir>/test/$1"
+  },
+  "coverageReporters": ["clover", "json", "lcov", "text", "json-summary"],
+  "coveragePathIgnorePatterns": ["test", "node_modules"],
+  "collectCoverageFrom": [
+    "<rootDir>/src/**/*.{ts,js}",
+    "!<rootDir>/src/postgresql/repositories.module.ts",
+    "!<rootDir>/src/postgresql/repositories/index.ts",
+    "!<rootDir>/src/index.ts",
+    "!<rootDir>/src/gRPC/generate/**/*.ts",
+    "!<rootDir>/src/postgresql/migrations/**/*.ts",
+    "!**/node_modules/**",
+    "!**/test/**"
+  ],
+  "coverageDirectory": "./report/coverage"
+}

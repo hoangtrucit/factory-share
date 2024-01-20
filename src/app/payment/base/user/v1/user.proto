@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package app.payment.base.user.v1;
+
+// User information
+message UserModel {
+  // The id
+  string id = 1;
+  // The user name
+  string user_name = 2;
+  // The email
+  string email = 3;
+}
